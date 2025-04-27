@@ -1,0 +1,253 @@
+<!-- 
+ * index.html
+ *
+ *  Created on: 2025-04-24
+ *  Edited on: 2025-04-24
+ *      Author: Andwardo
+ *      Version: 1.2
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andy Ballard Piano Service</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="description" content="Experienced and trustworthy piano tuning and repair in DFW and beyond.">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #fff;
+      color: #111;
+    }
+
+    header {
+      background: black;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      font-style: italic;
+      color: #c6a462;
+      margin: 0.5rem 0 0;
+    }
+
+    nav {
+      background: #111;
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover {
+      color: #c6a462;
+      border-bottom: 2px solid #c6a462;
+    }
+
+    #hero-container {
+      width: 100%;
+      height: 90vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+    }
+
+    #hero-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+    }
+
+    footer {
+      background: black;
+      color: #c6a462;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-note {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 1.5rem;
+      border-top: 2px solid #c6a462;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    form button {
+      background: black;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    form button:hover {
+      background: #c6a462;
+      color: black;
+    }
+
+    #contact-form {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Andy Ballard Piano Service</h1>
+    <p>Serving North Texas with integrity and precision since 2014</p>
+  </header>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#faq">FAQ</a>
+    <a href="#player">Player Pianos</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Hero Rotating Image Section -->
+  <div id="hero-container">
+    <img id="hero-image" src="/images/hero/photo1.jpeg" alt="Andy Ballard Piano Service Work" />
+  </div>
+
+  <!-- Custom Contact Message -->
+  <div class="contact-note" id="contact">
+    <p><strong>To assure the highest level of service, we conduct all scheduling via email or text.</strong><br>
+    If you require a phone consultation, please leave your phone number and a good time to call.</p>
+  </div>
+
+  <!-- SPA-Style Contact Form -->
+  <section id="contact-form">
+    <h2>Contact Andy</h2>
+    <form id="abpsContactForm">
+      <label>Name:<br>
+        <input type="text" name="name" required>
+      </label><br><br>
+
+      <label>Email:<br>
+        <input type="email" name="email" required>
+      </label><br><br>
+
+      <label>Phone (optional):<br>
+        <input type="text" name="phone">
+      </label><br><br>
+
+      <label>Message:<br>
+        <textarea name="message" rows="6" required></textarea>
+      </label><br><br>
+
+      <div class="g-recaptcha" data-sitekey="6LcKyiMrAAAAAMQQvAhLfxDYF7grD6yMqCh5I2BO"></div><br>
+
+      <button type="submit">Send Message</button>
+      <div id="form-response" style="margin-top: 1rem;"></div>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Andy Ballard Piano Service. All rights reserved.
+  </footer>
+
+  <!-- Hero Image Rotation JS -->
+  <script>
+    const heroImage = document.getElementById("hero-image");
+    let imagePaths = [];
+    let currentIndex = 0;
+
+    async function fetchHeroImages() {
+      try {
+        const response = await fetch('/php/get_hero_images.php');
+        imagePaths = await response.json();
+        if (imagePaths.length > 0) {
+          heroImage.src = imagePaths[0];
+          setInterval(rotateImage, 5000);
+        }
+      } catch (err) {
+        console.error("Could not load hero images:", err);
+      }
+    }
+
+    function rotateImage() {
+      currentIndex = (currentIndex + 1) % imagePaths.length;
+      heroImage.style.opacity = 0;
+      setTimeout(() => {
+        heroImage.src = imagePaths[currentIndex];
+        heroImage.style.opacity = 1;
+      }, 500);
+    }
+
+    fetchHeroImages();
+  </script>
+
+  <!-- Contact Form Submission -->
+  <script>
+    document.getElementById("abpsContactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const responseBox = document.getElementById("form-response");
+
+      try {
+        const response = await fetch("/php/send_contact.php", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          responseBox.innerHTML = "<span style='color:green;'>Message sent successfully!</span>";
+          form.reset();
+          grecaptcha.reset();
+        } else {
+          responseBox.innerHTML = "<span style='color:red;'>Error: " + result.message + "</span>";
+        }
+      } catch (err) {
+        responseBox.innerHTML = "<span style='color:red;'>Failed to send message. Please try again.</span>";
+      }
+    });
+  </script>
+
+  <!-- Load reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>

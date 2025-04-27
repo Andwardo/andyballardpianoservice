@@ -4,7 +4,7 @@
  *  Created on: 2025-04-24
  *  Edited on: 2025-04-26
  *      Author: Andwardo
- *      Version: 1.62
+ *      Version: 1.5 (final logo & name update)
 -->
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andy Ballard Piano Service</title>
-  <meta name="description" content="Experienced and Trustworthy Piano Tuning, Repair and PianoDisc QRS Pianomation Service, Sales and Upgrades in DFW and beyond.">
+  <meta name="description" content="Experienced and trustworthy piano tuning and repair in DFW and beyond.">
   <meta name="author" content="Blue Sky Fusion Studios">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#c6a462">
@@ -65,23 +65,30 @@
       font-size: 1.1rem;
     }
 
-    /* Hero Container */
+    /* Hero Section */
     #hero-container {
       position: relative;
       width: 100%;
-      min-height: 90vh;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-color: black;
+      height: auto;
+      background: black;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+    }
+
+    #hero-image {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 1s ease-in-out;
     }
 
     /* Hero Text Blocks */
     .hero-text-blocks {
+      position: relative;
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -202,17 +209,17 @@
       <img src="/images/logo-main.png" alt="" class="logo-img" />
       <img src="/images/name-header.png" alt="" class="name-img" />
     </div>
-    <p class="tagline">Reputation Is Our Greatest Asset</p>
+    <p class="tagline">Serving North Texas with integrity and expertise since 2014</p>
   </header>
 
   <!-- Hero Section -->
-  <section id="hero-container">
-    <div class="hero-text-blocks">
-      <div class="hero-block">Tuning & Repair</div>
-      <div class="hero-block">Player Pianos</div>
-      <div class="hero-block"><a href="#contact">Contact</a></div>
-    </div>
-  </section>
+    <section id="hero-container">
+      <div class="hero-text-blocks">
+        <div class="hero-block">Tuning & Repair</div>
+        <div class="hero-block">Player Pianos</div>
+        <div class="hero-block"><a href="#contact">Contact</a></div>
+      </div>
+    </section>
 
   <!-- Contact Message -->
   <div class="contact-note" id="contact">
@@ -253,34 +260,13 @@
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Andy Ballard Piano Service | Blue Sky Fusion, Inc. All rights reserved.
+    &copy; 2025 Andy Ballard Piano Service. All rights reserved.
   </footer>
 
-  <!-- Hero Background Rotator Script -->
-  <script>
-    const heroContainer = document.getElementById('hero-container');
+  <!-- Hero Rotator Script -->
+  <script src="/scripts/hero-rotator.js"></script>
 
-    function setRandomHeroImage(images) {
-      const randomImage = images[Math.floor(Math.random() * images.length)];
-      heroContainer.style.backgroundImage = `url('${randomImage}')`;
-    }
-
-    fetch('/php/get_hero_images.php')
-      .then(response => response.json())
-      .then(images => {
-        if (images.length > 0) {
-          setRandomHeroImage(images);
-          setInterval(() => setRandomHeroImage(images), 60000); // rotate every minute
-        } else {
-          console.error("No hero images found.");
-        }
-      })
-      .catch(err => {
-        console.error("Error fetching hero images:", err);
-      });
-  </script>
-
-  <!-- Contact Form Script -->
+  <!-- Contact Form Submission Script -->
   <script>
     document.getElementById("abpsContactForm").addEventListener("submit", async function(e) {
       e.preventDefault();
