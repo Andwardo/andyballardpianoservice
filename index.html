@@ -2,9 +2,9 @@
  * index.html
  *
  *  Created on: 2025-04-24
- *  Edited on: 2025-04-26
+ *  Edited on: 2025-04-27
  *      Author: Andwardo
- *      Version: 1.62
+ *      Version: 1.63
 -->
 
 <!DOCTYPE html>
@@ -54,15 +54,15 @@
     }
 
     .name-img {
-      height: 50px;
-      width: auto;
+      width: clamp(200px, 50vw, 600px);
+      height: auto;
     }
 
     .tagline {
       font-style: italic;
       color: #c6a462;
       margin-top: 0.5rem;
-      font-size: 1.1rem;
+      font-size: clamp(14px, 2.5vw, 24px);
     }
 
     /* Hero Container */
@@ -184,7 +184,7 @@
       }
 
       .name-img {
-        height: 40px;
+        width: clamp(200px, 70vw, 500px);
       }
 
       .hero-block {
@@ -199,8 +199,8 @@
   <!-- Header Section -->
   <header class="site-header">
     <div class="header-content">
-      <img src="/images/logo-main.png" alt="" class="logo-img" />
-      <img src="/images/name-header.png" alt="" class="name-img" />
+      <img src="/images/logo-main.png" alt="Logo" class="logo-img" />
+      <img src="/images/name-header.png" alt="Name" class="name-img" />
     </div>
     <p class="tagline">Reputation Is Our Greatest Asset</p>
   </header>
