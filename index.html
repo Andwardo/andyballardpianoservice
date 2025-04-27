@@ -4,7 +4,7 @@
  *  Created on: 2025-04-24
  *  Edited on: 2025-04-27
  *      Author: Andwardo
- *      Version: 1.71
+ *      Version: 1.72
 -->
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
       margin: 0;
       font-family: 'Georgia', serif;
       background-color: #000;
-      color: #111;
+      color: #fff;
       scroll-behavior: smooth;
     }
 
@@ -130,6 +130,7 @@
       padding: 2rem;
       border: 1px solid #ccc;
       background: #f9f9f9;
+      color: #111;
     }
 
     form input, form textarea {
@@ -163,6 +164,55 @@
       margin-bottom: 0.25rem;
     }
 
+    /* Payment and PCI Section */
+    .payment-security {
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cards img {
+      height: 50px;
+      width: auto;
+    }
+
+    .pci-badge {
+      text-align: center;
+    }
+
+    .pci-badge img {
+      height: 50px;
+      width: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .pci-badge p {
+      color: white;
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.2s ease-in-out forwards;
+    }
+
     /* Footer */
     footer {
       background: black;
@@ -194,6 +244,11 @@
       .hero-link {
         width: 220px;
         text-align: center;
+      }
+
+      .cards {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
   </style>
@@ -259,6 +314,20 @@
     </form>
   </section>
 
+  <!-- Payment and Security Section -->
+  <div class="payment-security fade-in">
+    <div class="cards">
+      <img src="/images/visa.png" alt="Visa">
+      <img src="/images/mastercard.png" alt="Mastercard">
+      <img src="/images/amex.png" alt="American Express">
+      <img src="/images/discover.png" alt="Discover">
+    </div>
+    <div class="pci-badge">
+      <img src="/images/pci.png" alt="PCI DSS Compliant">
+      <p>We are PCI DSS Compliant for secure credit card processing.</p>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     &copy; 2025 Andy Ballard Piano Service | Blue Sky Fusion, Inc. All rights reserved.
@@ -278,7 +347,7 @@
       .then(images => {
         if (images.length > 0) {
           setRandomHeroImage(images);
-          setInterval(() => setRandomHeroImage(images), 60000); // rotate every minute
+          setInterval(() => setRandomHeroImage(images), 60000);
         } else {
           console.error("No hero images found.");
         }
