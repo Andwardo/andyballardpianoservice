@@ -4,7 +4,7 @@
  *  Created on: 2025-04-24
  *  Edited on: 2025-04-27
  *      Author: Andwardo
- *      Version: 1.63
+ *      Version: 1.71
 -->
 
 <!DOCTYPE html>
@@ -80,38 +80,37 @@
       align-items: center;
     }
 
-    /* Hero Text Blocks */
+    /* Hero Navigation Blocks */
     .hero-text-blocks {
       z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
       text-align: center;
     }
 
-    .hero-block {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      transition: background 0.3s;
+    .hero-nav {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .hero-block:hover {
-      background: rgba(198, 164, 98, 0.7);
-      color: black;
-    }
-
-    .hero-block a {
+    .hero-link {
+      background: rgba(0, 0, 0, 0.7);
       color: #c6a462;
+      padding: 1.2rem 2.5rem;
+      border-radius: 10px;
+      font-weight: bold;
       text-decoration: none;
+      font-size: 1.6rem;
+      transition: background 0.3s, color 0.3s;
     }
 
-    .hero-block a:hover {
-      color: white;
+    .hero-link:hover {
+      background: rgba(198, 164, 98, 0.9);
+      color: black;
     }
 
     /* Contact Section */
@@ -187,8 +186,14 @@
         width: clamp(200px, 70vw, 500px);
       }
 
-      .hero-block {
-        font-size: 1.2rem;
+      .hero-nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero-link {
+        width: 220px;
+        text-align: center;
       }
     }
   </style>
@@ -205,12 +210,15 @@
     <p class="tagline">Reputation Is Our Greatest Asset</p>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Floating Navigation -->
   <section id="hero-container">
     <div class="hero-text-blocks">
-      <div class="hero-block">Tuning & Repair</div>
-      <div class="hero-block">Player Pianos</div>
-      <div class="hero-block"><a href="#contact">Contact</a></div>
+      <div class="hero-nav">
+        <a href="/index.html" class="hero-link">Home</a>
+        <a href="/about.html" class="hero-link">About</a>
+        <a href="/services.html" class="hero-link">Services</a>
+        <a href="#contact" class="hero-link">Contact</a>
+      </div>
     </div>
   </section>
 

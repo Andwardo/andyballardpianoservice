@@ -1,0 +1,9 @@
+# robots.txt for andyballardpianoservice.com
+# Created on: 2025-04-27
+# Author: Andwardo
+# Version: 1.0
+
+User-agent: *
+Allow: /
+
+Sitemap: https://andyballardpianoservice.com/sitemap.xml
