@@ -1,4 +1,46 @@
+# Old ignores
 images/hero/
 .archive/
 .archives/
 public_html.zip
+
+
+# Node modules (if using npm or any build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Local environment variables and credentials
+.env
+.env.*
+
+# Compiled or minified files (optional)
+*.min.js
+*.min.css
+dist/
+build/
+
+# Editor-specific settings
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Git backup files
+*.orig
+
+# Cache or artifact folders
+.cache/
+.next/
+out/
